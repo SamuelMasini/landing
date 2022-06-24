@@ -1,20 +1,16 @@
 <?php
 
-//	$hostname="34.210.226.28";
-//	$username="bees";
-//	$password="Backus$$2022";
-//	$dbname="bees";
-
-	$hostname="localhost";
+	//BASE DE DATOS LOCAL MARCO
+/* 	$hostname="localhost";
 	$username="development";
 	$password="Development$$2022";
-	$dbname="lading_kelly";
+	$dbname="lading_kelly"; */
 
-/* 	$hostname="www.registro-bees.com:3306";
+	//BASE DE DATOS PRODUCCION
+	$hostname="www.registro-bees.com:3306";
 	$username="registr2_landing_bees_bd";
 	$password="Backus$$2022";
-	$dbname="registr2_landing_bees";
-	*/
+	$dbname="registr2_landing_enviamas";
 	
 	$conection = mysqli_connect($hostname,$username, $password, $dbname); 
 
