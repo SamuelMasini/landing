@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
 include('./Conection/conection.php');
 
 date_default_timezone_set('America/Lima');
