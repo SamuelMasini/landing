@@ -98,37 +98,65 @@
       e.preventDefault();
 
       var nombre = document.getElementById('nombre').value
+      var empresa = document.getElementById('empresa').value
       var correo = document.getElementById('correo').value
-
-      var form = new FormData();
-
-      form.append("nombre", nombre);
-      form.append("correo", correo);
-
-      var settings = {
-        "url": "https://registro-bees.com/enviamas-landing/enviarDatos.php",
-        "method": "POST",
-        "timeout": 0,
-        "processData": false,
-        "mimeType": "multipart/form-data",
-        "contentType": false,
-        "data": form
-      };
-
-      $.ajax(settings).done(function (response) {
-
-        const resp = JSON.parse(response)
-
-        if(resp.success) {
+      var telefono = document.getElementById('telefono').value
+        fetch('http://localhost:5001/landing-enviamas-f43bd/us-central1/app/send_email',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            nombre,
+            empresa,
+            correo,
+            telefono,
+          })
+        })
+        .then(function (response) {
+          console.log(response);
           $('#formcontainer').css("display", "none")
           $('#thankscontainer').show()
-        } else {
-          alert('no se pudo guardar')
-        }
+        })
+        .catch(function (error) {
+          console.log(error);
+          alert('no se pudo enviar email')
+        })
+        .finally(function () {
+          $('#formcontainer').css("display", "none")
+          $('#thankscontainer').show()
+        });
+        
+    //   var form = new FormData();
 
-        $('#formcontainer').css("display", "none")
-        $('#thankscontainer').show()
-      });
+    //   form.append("nombre", nombre);
+    //   form.append("correo", correo);
+
+    //   var settings = {
+    //     "url": "https://registro-bees.com/enviamas-landing/enviarDatos.php",
+    //     "method": "POST",
+    //     "timeout": 0,
+    //     "processData": false,
+    //     "mimeType": "multipart/form-data",
+    //     "contentType": false,
+    //     "data": form
+    //   };
+
+    //   $.ajax(settings).done(function (response) {
+
+    //     const resp = JSON.parse(response)
+
+    //     if(resp.success) {
+    //       $('#formcontainer').css("display", "none")
+    //       $('#thankscontainer').show()
+    //     } else {
+    //       alert('no se pudo guardar')
+    //     }
+
+    //     $('#formcontainer').css("display", "none")
+    //     $('#thankscontainer').show()
+    //   });
 
     });
   });
