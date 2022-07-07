@@ -77,7 +77,7 @@ app.post("/post_slack", (req, res) => {
       "Teléfono: " + req.body.telefono + "\n" +
       "Empresa: " + req.body.empresa,
     };
-    axios.post("https://hooks.slack.com/services/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", payload)
+    axios.post(process.env.SLACK_WEBHOOK_URL, payload)
         .then((result) => {
           res.status(200).json({
             data: result,
@@ -93,7 +93,7 @@ app.post("/post_slack", (req, res) => {
     console.log(err);
     res.status(500).json({
       success: false,
-      message: "Error sending email, hable con el administrador",
+      message: "Error sending slack, hable con el administrador",
     });
   }
 });
