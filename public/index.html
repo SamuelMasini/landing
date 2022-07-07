@@ -266,32 +266,32 @@
               $('#thankscontainer').show()
             });
 
-            // fetch('http://localhost:5001/landing-enviamas-f43bd/us-central1/app/send_email',
-            // {
-            //   method: 'POST',
-            //   headers: {
-            //     'Content-Type': 'application/json'
-            //   },
-            //   body: JSON.stringify({
-            //     nombre,
-            //     empresa,
-            //     correo,
-            //     telefono,
-            //   })
-            // })
-            // .then(function (response) {
-            //   console.log(response);
-            //   $('#formcontainer').css("display", "none")
-            //   $('#thankscontainer').show()
-            // })
-            // .catch(function (error) {
-            //   console.log(error);
-            //   alert('no se pudo enviar email')
-            // })
-            // .finally(function () {
-            //   $('#formcontainer').css("display", "none")
-            //   $('#thankscontainer').show()
-            // });
+            fetch('http://localhost:5001/landing-enviamas-f43bd/us-central1/app/send_email',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                nombre,
+                empresa,
+                correo,
+                telefono,
+              })
+            })
+            .then(function (response) {
+              console.log(response);
+              $('#formcontainer').css("display", "none")
+              $('#thankscontainer').show()
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('no se pudo enviar email')
+            })
+            .finally(function () {
+              $('#formcontainer').css("display", "none")
+              $('#thankscontainer').show()
+            });
         });
     });
 </script>
