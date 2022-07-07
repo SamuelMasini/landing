@@ -9,6 +9,7 @@ const express = require("express");
 const app = express();
 app.use(cors());
 app.use( express.json() );
+const axios = require("axios");
 
 admin.initializeApp();
 
@@ -58,6 +59,36 @@ app.post("/send_email", (req, res) => {
       success: true,
       message: "Email sent",
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: "Error sending email, hable con el administrador",
+    });
+  }
+});
+
+app.post("/post_slack", (req, res) => {
+  try {
+    const payload = {
+      text: "*NUEVO CLIENTE*" + "\n" +
+      "Nombre del cliente: " + req.body.nombre + "\n" +
+      "Correo: " + req.body.correo + "\n" +
+      "Teléfono: " + req.body.telefono + "\n" +
+      "Empresa: " + req.body.empresa,
+    };
+    axios.post("https://hooks.slack.com/services/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", payload)
+        .then((result) => {
+          res.status(200).json({
+            data: result,
+          });
+        })
+        .catch((error) => {
+          res.status(400).json({
+            success: false,
+            message: "No se encontro",
+          });
+        });
   } catch (err) {
     console.log(err);
     res.status(500).json({
