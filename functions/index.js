@@ -84,6 +84,8 @@ app.post("/post_slack", (req, res) => {
           });
         })
         .catch((error) => {
+          console.log("Error en API SLACK");
+          console.log(error);
           res.status(400).json({
             success: false,
             message: "No se encontro",

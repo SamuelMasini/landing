@@ -51,15 +51,14 @@
                                 font-weight: bold;
                             "
                         >
-                            <h1><b>COMIENZA TU PRUEBA GRATUITA</b></h1>
+                            <h1><b>SOLICITA TU PRUEBA GRATUITA</b></h1>
                         </div>
                         <div
                             class="mensaje px-4 pt-0 my-2 mx-auto pb-3"
                             style="text-align: center; color: #777474"
                         >
                             <p>
-                                ¡Regístrate y obtén una demo GRATIS! Nos
-                                comunicaremos contigo a la brevedad posible.
+                                Regístrate y solicita tu demo GRATIS! Nos comunicaremos contigo a la brevedad posible.
                             </p>
                         </div>
                         <form name="form-user" id="form" class="form-container">
@@ -240,7 +239,7 @@
             var telefono = document.getElementById("telefono").value;
 
             fetch(
-                "http://localhost:5001/landing-enviamas-f43bd/us-central1/app/post_slack",
+                "https://us-central1-enviamas-kelly.cloudfunctions.net/app/post_slack",
                 {
                     method: "POST",
                     headers: {
@@ -266,7 +265,7 @@
               $('#thankscontainer').show()
             });
 
-            fetch('http://localhost:5001/landing-enviamas-f43bd/us-central1/app/send_email',
+            fetch('https://us-central1-enviamas-kelly.cloudfunctions.net/app/send_email',
             {
               method: 'POST',
               headers: {
